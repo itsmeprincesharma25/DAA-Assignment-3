@@ -1,14 +1,15 @@
 # 🧮 DAA Assignment 3 — Optimization of a City Transportation Network (Minimum Spanning Tree)
 
-**Student Name:** Prince Sharma
-**Course:** Design and Analysis of Algorithms
-**Topic:** Minimum Spanning Tree (Prim’s and Kruskal’s Algorithms)
-**Tool:** IntelliJ IDEA + Maven
+**Student Name:** Prince Sharma  
+**Course:** Design and Analysis of Algorithms  
+**Topic:** Minimum Spanning Tree (Prim’s and Kruskal’s Algorithms)  
+**Tool:** IntelliJ IDEA + Maven  
 **Repository:** [DAA-Assignment-3](https://github.com/itsmeprincesharma25/DAA-Assignment-3)
 
 ---
 
 ## 🎯 Objective
+
 To optimize a city’s transportation network by finding the **minimum set of roads** that connect all city districts with the **lowest total construction cost**, ensuring every district is reachable.
 
 This problem is modeled as a **weighted undirected graph**, where:
@@ -22,24 +23,26 @@ We use **Prim’s** and **Kruskal’s** algorithms to compute the **Minimum Span
 
 ## ⚙️ Algorithms Implemented
 
-### 1. Prim’s Algorithm
+### 🧩 1. Prim’s Algorithm
 - Starts from any vertex and grows the MST by adding the **smallest edge** connecting the tree to a new vertex.
 - Uses a **min-heap (PriorityQueue)** for efficiency.
-- Time complexity: `O(E log V)`
-- Space complexity: `O(V + E)`
+- **Time complexity:** `O(E log V)`
+- **Space complexity:** `O(V + E)`
 
-### 2. Kruskal’s Algorithm
+### 🧮 2. Kruskal’s Algorithm
 - Sorts all edges by increasing weight.
 - Adds edges to MST if they don’t form a cycle, using a **Disjoint Set Union (Union-Find)** structure.
-- Time complexity: `O(E log E)`
-- Space complexity: `O(V + E)`
+- **Time complexity:** `O(E log E)`
+- **Space complexity:** `O(V + E)`
 
 ---
 
-## 🧩 Input Data
+## 📂 Input Data
+
 Graphs were loaded from [`src/main/resources/input/input.json`](src/main/resources/input/input.json).
 
-### Summary
+### Dataset Summary
+
 | Graph ID | Vertices | Edges | Description |
 |-----------|-----------|--------|--------------|
 | 1 | 5 | 7 | Medium network of 5 districts |
@@ -49,7 +52,7 @@ Graphs were loaded from [`src/main/resources/input/input.json`](src/main/resourc
 
 ## 📊 Experimental Results
 
-The results were recorded in [`output.json`](src/main/resources/output/output.json).
+Results were recorded in [`src/main/resources/output/output.json`](src/main/resources/output/output.json).
 
 | Graph ID | Algorithm | MST Total Cost | Execution Time (ms) | Key Ops / Comparisons | Heap/Union Ops |
 |-----------|------------|----------------|----------------------|------------------------|----------------|
@@ -58,7 +61,7 @@ The results were recorded in [`output.json`](src/main/resources/output/output.js
 | 2 | **Prim** | 6 | 0.015 | 5 comparisons, 5 key updates | 10 heap ops |
 | 2 | **Kruskal** | 6 | 0.010 | 3 edge comparisons | 16 finds, 3 unions |
 
-✅ Both algorithms produced **identical MST costs**, confirming correctness.
+✅ Both algorithms produced **identical MST costs**, confirming correctness.  
 The **structure of edges** differs slightly, which is normal due to edge selection order.
 
 ---
@@ -76,8 +79,8 @@ The **structure of edges** differs slightly, which is normal due to edge selecti
 | Observed Speed | Slower for small graphs | Slightly faster in this dataset |
 
 **Observation:**
-- Kruskal’s algorithm performed faster on smaller graphs because edge sorting is simple and fewer union operations were required.
-- Prim’s algorithm performs competitively on larger, dense graphs due to fewer edge checks and efficient heap usage.
+- Kruskal’s algorithm performed faster on smaller graphs due to simpler edge sorting.
+- Prim’s algorithm performs competitively on larger, dense graphs because of efficient heap usage.
 
 ---
 
@@ -85,15 +88,16 @@ The **structure of edges** differs slightly, which is normal due to edge selecti
 
 - Both **Prim’s** and **Kruskal’s** algorithms successfully produced MSTs with **equal total costs**, verifying correctness.
 - **Kruskal’s algorithm** showed **slightly better performance** in sparse graphs.
-- For **dense graphs**, **Prim’s algorithm** tends to be more efficient due to adjacency-based selection.
-- The project demonstrates the trade-off between heap operations and union-find operations.
+- For **dense graphs**, **Prim’s algorithm** tends to be more efficient.
+- This project highlights the trade-offs between heap operations and union–find operations in graph optimization.
 
 ---
 
 ## 🧪 Testing Summary
+
 - **Correctness Tests**
   - Total cost of MST is identical for both algorithms.
-  - MST edges = V - 1 (no cycles).
+  - MST edges = V − 1 (no cycles).
   - Graph connectivity verified.
 - **Performance Tests**
   - Execution times measured in milliseconds.
@@ -110,26 +114,41 @@ The **structure of edges** differs slightly, which is normal due to edge selecti
 ---
 
 ## 📂 Repository Structure
+
+```bash
 DAA-Assignment3/
 ├── pom.xml
 ├── README.md
 ├── src/
-│ ├── main/
-│ │ ├── java/edu/prince/daa/
-│ │ │ ├── Edge.java
-│ │ │ ├── Graph.java
-│ │ │ ├── DisjointSet.java
-│ │ │ ├── GraphLoader.java
-│ │ │ ├── KruskalMST.java
-│ │ │ ├── PrimMST.java
-│ │ │ └── MainRunner.java
-│ │ └── resources/
-│ │ ├── input/input.json
-│ │ └── output/output.json
+│   ├── main/
+│   │   ├── java/edu/prince/daa/
+│   │   │   ├── DisjointSet.java
+│   │   │   ├── Edge.java
+│   │   │   ├── Graph.java
+│   │   │   ├── GraphLoader.java
+│   │   │   ├── KruskalMST.java
+│   │   │   ├── PrimMST.java
+│   │   │   └── MainRunner.java
+│   └── resources/
+│       ├── input/input.json
+│       └── output/output.json
+│       └── output/results_summary.csv
 └── target/
+
+
+---
+
+## 🏅 Bonus Section — Graph Design and Integration (10%)
+
+As part of the bonus task, a fully object-oriented **Graph** structure was implemented in Java using the `Graph.java` and `Edge.java` classes.  
+The graph data is loaded dynamically from JSON and represented through an adjacency list, verified by a printed structure before each MST computation.  
+Both **Prim’s** and **Kruskal’s** algorithms operate directly on this custom `Graph` class, confirming proper integration and modular OOP design.  
+This implementation fulfills all the bonus requirements, demonstrating clear graph visualization and seamless algorithm integration.
+
 ---
 
 ## 🏁 How to Run
+
 ```bash
 # Compile
 mvn -q clean compile
