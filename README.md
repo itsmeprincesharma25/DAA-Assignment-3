@@ -113,6 +113,15 @@ The **structure of edges** differs slightly, which is normal due to edge selecti
 
 ---
 
+## 🏅 Bonus Section — Graph Design and Integration (10%)
+
+As part of the bonus task, a fully object-oriented **Graph** structure was implemented in Java using the `Graph.java` and `Edge.java` classes.  
+The graph data is loaded dynamically from JSON and represented through an adjacency list, verified by a printed structure before each MST computation.  
+Both **Prim’s** and **Kruskal’s** algorithms operate directly on this custom `Graph` class, confirming proper integration and modular OOP design.  
+This implementation fulfills all the bonus requirements, demonstrating clear graph visualization and seamless algorithm integration.
+
+---
+
 ## 📂 Repository Structure
 
 ```bash
@@ -135,15 +144,6 @@ DAA-Assignment3/
 │       └── output/results_summary.csv
 └── target/
 
-
----
-
-## 🏅 Bonus Section — Graph Design and Integration (10%)
-
-As part of the bonus task, a fully object-oriented **Graph** structure was implemented in Java using the `Graph.java` and `Edge.java` classes.  
-The graph data is loaded dynamically from JSON and represented through an adjacency list, verified by a printed structure before each MST computation.  
-Both **Prim’s** and **Kruskal’s** algorithms operate directly on this custom `Graph` class, confirming proper integration and modular OOP design.  
-This implementation fulfills all the bonus requirements, demonstrating clear graph visualization and seamless algorithm integration.
 
 ---
 
