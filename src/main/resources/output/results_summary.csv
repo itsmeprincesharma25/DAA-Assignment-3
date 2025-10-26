@@ -1,0 +1,5 @@
+Graph ID,Algorithm,MST Total Cost,Execution Time (ms),Key Ops / Comparisons,Heap / Union Ops
+1,Prim,16,0.725,7 comparisons,7 key updates,14 heap ops
+1,Kruskal,16,0.140,5 edge comparisons,23 finds,4 unions
+2,Prim,6,0.015,5 comparisons,5 key updates,10 heap ops
+2,Kruskal,6,0.010,3 edge comparisons,16 finds,3 unions
