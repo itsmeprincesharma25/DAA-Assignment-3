@@ -42,6 +42,9 @@ public class MainRunner {
             System.out.println("Processing Graph ID: " + g.id + " (" +
                     g.numVertices() + " vertices, " + g.numEdges() + " edges)");
 
+            // 🧱 BONUS: Print the adjacency structure of the graph
+            g.printGraph();
+
             Map<String, Object> graphResult = new LinkedHashMap<>();
             graphResult.put("graph_id", g.id);
 
