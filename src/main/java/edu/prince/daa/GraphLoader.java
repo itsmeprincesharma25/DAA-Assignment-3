@@ -12,19 +12,7 @@ import java.util.Map;
 
 /**
  * GraphLoader
- * Simple utility to load graphs from a JSON file that matches the assignment format:
- *
- * {
- *   "graphs": [
- *     { "id": 1, "nodes": [...], "edges": [ { "from":"A", "to":"B", "weight":4 }, ... ] },
- *     ...
- *   ]
- * }
- *
- * Usage:
- *   List<Graph> graphs = GraphLoader.loadGraphs("src/main/resources/input/input.json");
- *
- * Returns null and prints an error if file reading or parsing fails.
+ * - Loads graphs from JSON and ensures adjacency lists are built.
  */
 public class GraphLoader {
 
@@ -33,9 +21,17 @@ public class GraphLoader {
             Gson gson = new Gson();
             Type mapType = new TypeToken<Map<String, List<Graph>>>() {}.getType();
             Map<String, List<Graph>> data = gson.fromJson(reader, mapType);
-            return data.get("graphs");
+            List<Graph> graphs = data.get("graphs");
+
+            // Ensure adjacency lists are built for each graph (Gson does not call custom constructors)
+            if (graphs != null) {
+                for (Graph g : graphs) {
+                    if (g != null) g.buildAdjacencyList();
+                }
+            }
+            return graphs;
         } catch (Exception e) {
-            System.err.println("Error loading graphs: " + filePath + " (" + e.getMessage() + ")");
+            System.err.println("GraphLoader.loadGraphs: error reading file '" + filePath + "': " + e.getMessage());
             return null;
         }
     }
